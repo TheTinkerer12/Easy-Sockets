@@ -44,23 +44,14 @@ namespace EasySockets
             ClientSocket.BaseSocket = BaseSocket.Accept();
         }
         //------------------------------------------------------------------------------------------------------------
-        public void Send(Socket ClientSocket, byte[] Data)
+        public void Send(byte[] Data)
         {
-            ClientSocket.Send(Data);
+            Send(Data);
         }
-        public void Send(Socket ClientSocket, string Data)
+        public void Send(string Data)
         {
-            byte[] temp2 = Encoding.ASCII.GetBytes(Data);
-            ClientSocket.Send(temp2);
-        }
-        public void Send(EasySocket ClientSocket, byte[] Data)
-        {
-            ClientSocket.BaseSocket.Send(Data);
-        }
-        public void Send(EasySocket ClientSocket, string Data)
-        {
-            byte[] temp2 = Encoding.ASCII.GetBytes(Data);
-            ClientSocket.BaseSocket.Send(temp2);
+            byte[] temp = Encoding.ASCII.GetBytes(Data);
+            Send(temp);
         }
         //------------------------------------------------------------------------------------------------------------
         public string ReceiveString(Socket ClientSocket)
